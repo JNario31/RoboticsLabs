@@ -221,7 +221,7 @@
         </ros>
       </plugin>
     </sensor>
-
+  </gazebo>
 
   <!-- Left wheel -->
   <gazebo reference="left_wheel_link">
