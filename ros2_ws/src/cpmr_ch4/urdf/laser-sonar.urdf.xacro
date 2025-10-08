@@ -161,7 +161,7 @@
 
   <!-- Laser unit -->
   <gazebo reference="laser_link">
-    <material>Gazebo/Red</material>
+    <material>Gazebo/Yellow</material>
   </gazebo>
   <link name="laser_link">
     <visual>
