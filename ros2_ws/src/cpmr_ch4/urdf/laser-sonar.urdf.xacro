@@ -1,26 +1,4 @@
 <?xml version="1.0"?>
-<!-- 
-	This is a differential drive robot badly 
-        modelled after the Nomadic Superscout
-        robot.
-
-        This robot has a single sonar transducer
-        
-        If the robot weighs about 10kg, the density (assuming no input from wheels and caster)
-        V=36x40x30 cm^3 + 3.14 x 18^2 x 8 = 51339cm^3 or density is .1948 g/cm^3
-
-        base is 36x40x30 x 0.1948 = 8.4kg
-        sonar is 3.14x18^2x8 x 0.1948 = 1.6kg
-        each wheel is 0.01kg
-        each part of the caster is 0.01kg
-
-	Version 1.0.
-	Copyright (c) Michael Jenkin and Gregory Dudek.
-
-	-->
-
-
-
 
 <robot name="$(arg name)" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
