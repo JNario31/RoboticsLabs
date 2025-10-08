@@ -159,69 +159,67 @@
     </sensor>
   </gazebo>
 
-  <!-- Laser unit -->
-  <gazebo reference="laser_link">
-    <material>Gazebo/Yellow</material>
-  </gazebo>
-  <link name="laser_link">
-    <visual>
-      <geometry>
-        <cylinder length="${robot_laser_height}" radius="${robot_laser_radius}" />
-      </geometry>
-      <material name="red"/>
-    </visual>
-    <collision>
-      <geometry>
-        <cylinder length="${robot_laser_height}" radius="${robot_laser_radius}" />
-      </geometry>
-    </collision>
-    <xacro:I_cylinder m="0.5" r="${robot_laser_radius}" h="${robot_laser_height}" />
-  </link>
+<!-- Laser unit -->
+<link name="laser_link">
+  <visual>
+    <geometry>
+      <cylinder length="${robot_laser_height}" radius="${robot_laser_radius}" />
+    </geometry>
+    <material name="red"/>
+  </visual>
+  <collision>
+    <geometry>
+      <cylinder length="${robot_laser_height}" radius="${robot_laser_radius}" />
+    </geometry>
+  </collision>
+  <xacro:I_cylinder m="0.5" r="${robot_laser_radius}" h="${robot_laser_height}" />
+</link>
 
-  <joint name="laser_joint" type="fixed">
-    <origin xyz="0.0 0.0 ${robot_base_height/2+robot_laser_height/2}" rpy="0.0 0.0 0.0" />
-    <parent link="base_link" />
-    <child link="laser_link" />
-    <axis xyz="0 0 1" />
-  </joint>
+<joint name="laser_joint" type="fixed">
+  <origin xyz="0.0 0.0 ${robot_base_height/2+robot_laser_height/2}" rpy="0.0 0.0 0.0" />
+  <parent link="base_link" />
+  <child link="laser_link" />
+  <axis xyz="0 0 1" />
+</joint>
 
-  <gazebo reference="laser_link">
-    <sensor type="ray" name="laser"> 
-      <pose>0 0 0 0 0 0</pose>
-      <visualize>true</visualize>
-      <update_rate>10</update_rate>
-      <ray>
-        <scan>
-          <horizontal>
-            <samples>9</samples>
-            <resolution>1</resolution>
-            <min_angle>-0.1309</min_angle>
-            <max_angle>0.1309</max_angle>
-          </horizontal>
-          <vertical>
-            <samples>9</samples>
-            <resolution>1</resolution>
-            <min_angle>-0.1309</min_angle>
-            <max_angle>0.1309</max_angle>
-          </vertical>
-        </scan>
-        <range>
-          <min>${robot_laser_radius+0.1}</min>
-          <max>${robot_laser_radius+5}</max>
-          <resolution>0.01</resolution>
-        </range>
-      </ray>
-      <plugin name="laser_plugin" filename="libgazebo_ros_ray_sensor.so">
-        <frame_name>laser_link</frame_name>
-        <updateRate>10</updateRate>
-        <radiation>laser</radiation>
-        <output_type>sensor_msgs/LaserScan</output_type>
-        <ros>
-          <remapping>~/out:=laser</remapping>
-        </ros>
-      </plugin>
-    </sensor>
-  </gazebo>
+<gazebo reference="laser_link">
+  <material>Gazebo/Red</material>
+  <sensor type="ray" name="laser">
+    <pose>0 0 0 0 0 0</pose>
+    <visualize>true</visualize>
+    <update_rate>10</update_rate>
+    <ray>
+      <scan>
+        <horizontal>
+          <samples>9</samples>
+          <resolution>1</resolution>
+          <min_angle>-0.1309</min_angle>
+          <max_angle>0.1309</max_angle>
+        </horizontal>
+        <vertical>
+          <samples>9</samples>
+          <resolution>1</resolution>
+          <min_angle>-0.1309</min_angle>
+          <max_angle>0.1309</max_angle>
+        </vertical>
+      </scan>
+      <range>
+        <min>${robot_laser_radius+0.1}</min>
+        <max>${robot_laser_radius+5}</max>
+        <resolution>0.01</resolution>
+      </range>
+    </ray>
+    <plugin name="laser_plugin" filename="libgazebo_ros_ray_sensor.so">
+      <frame_name>laser_link</frame_name>
+      <updateRate>10</updateRate>
+      <radiation>laser</radiation>
+      <output_type>sensor_msgs/LaserScan</output_type>
+      <ros>
+        <remapping>~/out:=laser</remapping>
+      </ros>
+    </plugin>
+  </sensor>
+</gazebo>
 
   <!-- Left wheel -->
   <gazebo reference="left_wheel_link">
